@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>CyberLearn Academy</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #101827;
+  color: #f1f5f9;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 22px;
+  background: #17263b;
+  border-bottom: 1px solid #30415a;
+  text-align: center;
+}
+
+header h1 {
+  color: #38bdf8;
+  margin: 0 0 8px;
+}
+
+header p {
+  color: #a9b7ca;
+  margin: 0;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+}
+
+.card {
+  background: #1b293d;
+  border: 1px solid #30415a;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+h2, h3 {
+  color: #38bdf8;
+}
+
+p, li {
+  line-height: 1.7;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+button {
+  border: 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.navbtn {
+  background: #263b55;
+  color: white;
+}
+
+.navbtn.active {
+  background: #0284c7;
+}
+
+.primary {
+  background: #0284c7;
+  color: white;
+}
+
+.answer {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 10px 0;
+  background: #263b55;
+  color: white;
+}
+
+.answer:hover {
+  background: #365574;
+}
+
+.answer:disabled {
+  opacity: .7;
+  cursor: default;
+}
+
+#feedback {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.progress {
+  background: #30415a;
+  border-radius: 20px;
+  height: 12px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+#progressBar {
+  background: #22c55e;
+  width: 0%;
+  height: 100%;
+  transition: width .3s;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  background: #0c4567;
+  color: #7dd3fc;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.lesson-list li {
+  margin-bottom: 8px;
+}
+
+@media(max-width:500px) {
+  .container { padding: 12px; }
+  header { padding: 18px 10px; }
+  button { font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🛡️ CyberLearn Academy</h1>
+  <p>Learn Cybersecurity the Ethical Way</p>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <span class="badge">BEGINNER LEVEL</span>
+    <h2>Welcome to CyberLearn</h2>
+    <p>
+      Learn how to protect accounts, recognize online threats
+      and understand cybersecurity fundamentals.
+    </p>
+
+    <h3>Your learning progress</h3>
+    <div class="progress">
+      <div id="progressBar"></div>
+    </div>
+    <p id="progressText">0 of 5 lessons completed</p>
+    <p id="scoreText">Quiz score: 0</p>
+  </section>
+
+  <nav aria-label="Training sections">
+    <button class="navbtn active" onclick="showPage('home',this)">
+      Home
+    </button>
+    <button class="navbtn" onclick="showPage('lessons',this)">
+      Lessons
+    </button>
+    <button class="navbtn" onclick="showPage('quiz',this)">
+      Quiz
+    </button>
+    <button class="navbtn" onclick="showPage('about',this)">
+      About
+    </button>
+  </nav>
+
+  <!-- HOME -->
+
+  <section id="home" class="page">
+    <div class="card">
+      <h2>🎓 Start learning</h2>
+      <p>Complete the five beginner lessons and test your knowledge.</p>
+      <button class="primary" onclick="showPage('lessons')">
+        Start training →
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>What you will learn</h3>
+      <ul class="lesson-list">
+        <li>Cybersecurity fundamentals</li>
+        <li>Phishing and fake websites</li>
+        <li>Password protection</li>
+        <li>Two-factor authentication</li>
+        <li>Ethical hacking principles</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LESSONS -->
+
+  <section id="lessons" class="page hidden">
+
+    <div class="card">
+      <h2>Lesson 1: Cybersecurity Basics</h2>
+      <p>
+        Cybersecurity is the practice of protecting computers,
+        networks, applications and information from digital attacks.
+      </p>
+      <h3>Three important principles</h3>
+      <ul>
+        <li><b>Confidentiality:</b> Keep private information private.</li>
+        <li><b>Integrity:</b> Protect information from unauthorized changes.</li>
+        <li><b>Availability:</b> Keep systems accessible when needed.</li>
+      </ul>
+      <button class="primary" onclick="completeLesson(0,this)">
+        Mark lesson complete
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Lesson 2: Phishing Awareness</h2>
+      <p>
+        Phishing is an attack where someone tries to trick people
+        into revealing sensitive information through fake messages
+        or websites.
+      </p>
+      <h3>Warning signs</h3>
+      <ul>
+        <li>Unexpected login requests.</li>
+        <li>Messages demanding urgent action.</li>
+        <li>Misspelled or misleading domain names.</li>
+        <li>Requests for passwords or verification codes.</li>
+      </ul>
+      <p><b>Safety tip:</b> Never share your Telegram login code.</p>
+      <button class="primary" onclick="completeLesson(1,this)">
+        Mark lesson complete
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Lesson 3: Password Security</h2>
+      <p>
+        A strong password makes unauthorized access more difficult.
+      </p>
+      <ul>
+        <li>Use long, unique passwords.</li>
+        <li>Never reuse passwords across important accounts.</li>
+        <li>Use a trusted password manager.</li>
+        <li>Never share your password with strangers.</li>
+      </ul>
+      <button class="primary" onclick="completeLesson(2,this)">
+        Mark lesson complete
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Lesson 4: Two-Factor Authentication</h2>
+      <p>
+        Two-factor authentication (2FA) adds another security
+        layer when signing into an account.
+      </p>
+      <h3>Examples</h3>
+      <ul>
+        <li>Authenticator applications.</li>
+        <li>Security keys.</li>
+        <li>Additional verification methods.</li>
+      </ul>
+      <p>
+        Keep recovery information safe and never give login codes
+        to someone claiming to be support.
+      </p>
+      <button class="primary" onclick="completeLesson(3,this)">
+        Mark lesson complete
+      </button>
+    </div>
+
+    <div class="card">
+      <h2>Lesson 5: Ethical Hacking</h2>
+      <p>
+        Ethical hacking means testing computer systems with
+        permission to identify security weaknesses.
+      </p>
+      <h3>Ethical rules</h3>
+      <ul>
+        <li>Get written permission before testing.</li>
+        <li>Use your own laboratory or authorized systems.</li>
+        <li>Protect private information.</li>
+        <li>Report vulnerabilities responsibly.</li>
+      </ul>
+      <p>
+        Practice using intentionally vulnerable training labs,
+        never somebody else's account or device.
+      </p>
+      <button class="primary" onclick="completeLesson(4,this)">
+        Mark lesson complete
+      </button>
+    </div>
+
+  </section>
+
+  <!-- QUIZ -->
+
+  <section id="quiz" class="page hidden">
+    <div class="card">
+      <span class="badge">KNOWLEDGE TEST</span>
+      <h2>Cybersecurity Quiz</h2>
+
+      <p id="questionNumber">Question 1 of 5</p>
+      <h3 id="question">Loading question...</h3>
+
+      <div id="answers"></div>
+
+      <p id="feedback" aria-live="polite"></p>
+
+      <button id="nextButton" class="primary hidden"
+        onclick="nextQuestion()">
+        Next question →
+      </button>
+
+      <button id="restartButton" class="primary hidden"
+        onclick="restartQuiz()">
+        Try again
+      </button>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about" class="page hidden">
+    <div class="card">
+      <h2>About CyberLearn</h2>
+      <p>
+        CyberLearn Academy is a beginner educational project
+        designed to introduce cybersecurity and online safety.
+      </p>
+      <h3>Learning objectives</h3>
+      <ul>
+        <li>Understand digital security.</li>
+        <li>Recognize online scams.</li>
+        <li>Protect personal accounts.</li>
+        <li>Understand responsible security testing.</li>
+      </ul>
+      <p>
+        This is an educational website. It does not attack,
+        access or collect information from other accounts.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  CyberLearn Academy · Educational Project · Learn Responsibly
+</footer>
+
+<script>
+
+// Navigation
+
+function showPage(page, button) {
+  document.querySelectorAll(".page").forEach(section => {
+    section.classList.add("hidden");
+  });
+
+  document.getElementById(page).classList.remove("hidden");
+
+  document.querySelectorAll(".navbtn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  if (button) {
+    button.classList.add("active");
+  } else {
+    document.querySelectorAll(".navbtn").forEach(btn => {
+      if (btn.textContent.trim().toLowerCase() === page) {
+        btn.classList.add("active");
+      }
+    });
+  }
+}
+
+// Lesson progress
+
+let completed = new Set();
+let quizBest = 0;
+
+function completeLesson(number, button) {
+  completed.add(number);
+  button.textContent = "✓ Completed";
+  button.disabled = true;
+  updateProgress();
+}
+
+function updateProgress() {
+  let count = completed.size;
+  let percent = count / 5 * 100;
+
+  document.getElementById("progressBar").style.width =
+    percent + "%";
+
+  document.getElementById("progressText").textContent =
+    count + " of 5 lessons completed";
+
+  document.getElementById("scoreText").textContent =
+    "Best quiz score: " + quizBest + " / 5";
+}
+
+// Quiz questions
+
+const questions = [
+  {
+    question: "What is phishing?",
+    answers: [
+      "A type of computer screen",
+      "A trick to steal sensitive information",
+      "A safe password manager"
+    ],
+    correct: 1
+  },
+  {
+    question: "Should you share your Telegram login code?",
+    answers: [
+      "Yes, with everyone",
+      "Only with strangers",
+      "No, never share it"
+    ],
+    correct: 2
+  },
+  {
+    question: "What makes a password stronger?",
+    answers: [
+      "Using your name",
+      "Using a long, unique password",
+      "Using 123456"
+    ],
+    correct: 1
+  },
+  {
+    question: "What does 2FA mean?",
+    answers: [
+      "Two-factor authentication",
+      "Two free accounts",
+      "Two fake applications"
+    ],
+    correct: 0
+  },
+  {
+    question: "When is ethical hacking allowed?",
+    answers: [
+      "When testing strangers' accounts",
+      "When you have proper authorization",
+      "Whenever you want"
+    ],
+    correct: 1
+  }
+];
+
+let current = 0;
+let score = 0;
+let answered = false;
+
+function loadQuestion() {
+  answered = false;
+
+  const q = questions[current];
+
+  document.getElementById("questionNumber").textContent =
+    "Question " + (current + 1) + " of " + questions.length;
+
+  document.getElementById("question").textContent =
+    q.question;
+
+  document.getElementById("feedback").textContent = "";
+
+  document.getElementById("nextButton").classList.add("hidden");
+  document.getElementById("restartButton").classList.add("hidden");
+
+  const answers = document.getElementById("answers");
+  answers.replaceChildren();
+
+  q.answers.forEach((answer, index) => {
+    const button = document.createElement("button");
+    button.className = "answer";
+    button.textContent = answer;
+
+    button.onclick = () => selectAnswer(index, button);
+
+    answers.appendChild(button);
+  });
+}
+
+function selectAnswer(index) {
+  if (answered) return;
+
+  answered = true;
+
+  const correct = questions[current].correct;
+  const feedback = document.getElementById("feedback");
+
+  document.querySelectorAll(".answer").forEach(button => {
+    button.disabled = true;
+  });
+
+  if (index === correct) {
+    score++;
+    feedback.textContent = "✓ Correct answer!";
+    feedback.style.color = "#4ade80";
+  } else {
+    feedback.textContent =
+      "✗ Incorrect. Correct answer: " +
+      questions[current].answers[correct];
+
+    feedback.style.color = "#fb7185";
+  }
+
+  if (current < questions.length - 1) {
+    document.getElementById("nextButton").classList.remove("hidden");
+  } else {
+    finishQuiz();
+  }
+}
+
+function nextQuestion() {
+  current++;
+  loadQuestion();
+}
+
+function finishQuiz() {
+  document.getElementById("question").textContent =
+    "Quiz completed!";
+
+  document.getElementById("questionNumber").textContent =
+    "Your final result";
+
+  document.getElementById("answers").replaceChildren();
+
+  document.getElementById("feedback").textContent =
+    "Your score: " + score + " / " + questions.length;
+
+  if (score > quizBest) {
+    quizBest = score;
+  }
+
+  updateProgress();
+
+  document.getElementById("nextButton").classList.add("hidden");
+  document.getElementById("restartButton").classList.remove("hidden");
+}
+
+function restartQuiz() {
+  current = 0;
+  score = 0;
+  loadQuestion();
+}
+
+// Start
+
+updateProgress();
+loadQuestion();
+
+</script>
+
+</body>
+</html>
